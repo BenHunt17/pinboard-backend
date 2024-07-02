@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinboard", "Pinboard/Pinboard.csproj", "{6A267B10-7A94-4926-A66D-2203605C48B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinboard", "Pinboard\Pinboard.csproj", "{6A267B10-7A94-4926-A66D-2203605C48B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinboard.Domain", "Pinboard.Domain\Pinboard.Domain.csproj", "{2856FCBE-2671-482A-80B1-47A86FEEE491}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinboard.DataPersistence", "Pinboard.DataPersistence\Pinboard.DataPersistence.csproj", "{1255C43E-A2CE-45EE-8CF4-D7A1F373A0B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinboard.Application", "Pinboard.Application\Pinboard.Application.csproj", "{0049A5F9-8D25-40D8-BAF2-058909A8E281}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinboard.RestApi", "Pinboard.RestApi\Pinboard.RestApi.csproj", "{7C958ECF-FE0B-4578-AF86-0DCC41000698}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{6A267B10-7A94-4926-A66D-2203605C48B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A267B10-7A94-4926-A66D-2203605C48B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A267B10-7A94-4926-A66D-2203605C48B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2856FCBE-2671-482A-80B1-47A86FEEE491}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2856FCBE-2671-482A-80B1-47A86FEEE491}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2856FCBE-2671-482A-80B1-47A86FEEE491}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2856FCBE-2671-482A-80B1-47A86FEEE491}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1255C43E-A2CE-45EE-8CF4-D7A1F373A0B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1255C43E-A2CE-45EE-8CF4-D7A1F373A0B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1255C43E-A2CE-45EE-8CF4-D7A1F373A0B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1255C43E-A2CE-45EE-8CF4-D7A1F373A0B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0049A5F9-8D25-40D8-BAF2-058909A8E281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0049A5F9-8D25-40D8-BAF2-058909A8E281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0049A5F9-8D25-40D8-BAF2-058909A8E281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0049A5F9-8D25-40D8-BAF2-058909A8E281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C958ECF-FE0B-4578-AF86-0DCC41000698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C958ECF-FE0B-4578-AF86-0DCC41000698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C958ECF-FE0B-4578-AF86-0DCC41000698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C958ECF-FE0B-4578-AF86-0DCC41000698}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

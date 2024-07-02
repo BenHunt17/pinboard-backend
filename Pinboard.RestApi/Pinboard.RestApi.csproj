@@ -1,21 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver" Version="2.27.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pinboard.Application\Pinboard.Application.csproj" />
-    <ProjectReference Include="..\Pinboard.DataPersistence\Pinboard.DataPersistence.csproj" />
     <ProjectReference Include="..\Pinboard.Domain\Pinboard.Domain.csproj" />
-    <ProjectReference Include="..\Pinboard.RestApi\Pinboard.RestApi.csproj" />
   </ItemGroup>
 
 </Project>
