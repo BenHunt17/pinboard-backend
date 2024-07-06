@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 Pinboard/appsettings.Development.json
 Pinboard/Properties/launchSettings.json
+Pinboard.RestApi/Properties/launchSettings.json

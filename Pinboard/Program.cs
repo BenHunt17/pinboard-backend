@@ -21,6 +21,19 @@ builder.Services.AddSingleton<IDataContext, DataContext>();
 
 builder.Services.AddSingleton<INoteUseCases, NoteUseCases>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            var origins = builder.Configuration["Cors:AllowedOrigins"]?.Split(";") ?? [];
+            policy.WithOrigins(origins)
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,6 +44,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthorization();
 

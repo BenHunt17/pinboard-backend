@@ -7,7 +7,7 @@ using System.Net;
 namespace Pinboard.RestApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/notes")]
     public class NoteController : ControllerBase
     {
         private readonly INoteUseCases _noteUseCases;

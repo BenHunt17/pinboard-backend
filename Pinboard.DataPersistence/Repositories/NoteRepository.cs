@@ -35,6 +35,7 @@ namespace Pinboard.DataPersistence.Repositories
 
         public Note Create(Note note)
         {
+            //TODO - Look at making the title unqiue per person
             var noteModel = new NoteModel(note);
 
             Collection.InsertOne(noteModel);
