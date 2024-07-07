@@ -43,7 +43,7 @@ namespace Pinboard.Application.UseCases
         public Note UpdateContent(string id, string content)
         {
             var existingNote = _dataContext.NoteRepository.Get(id);
-            existingNote.Title = content;
+            existingNote.Content = content;
             new NoteValidator().ValidateAndThrow(existingNote);
 
             return _dataContext.NoteRepository.UpdateContent(id, content);
