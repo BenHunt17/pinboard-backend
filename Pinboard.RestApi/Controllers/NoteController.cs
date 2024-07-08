@@ -17,11 +17,11 @@ namespace Pinboard.RestApi.Controllers
             _noteUseCases = noteUseCases;
         }
 
-        [HttpGet]
+        [HttpPost("search")]
         [ProducesResponseType(typeof(IEnumerable<Note>), (int)HttpStatusCode.OK)]
-        public IActionResult Get()
+        public IActionResult Get([FromBody] NoteSearchInput input)
         {
-            var notes = _noteUseCases.GetNotes();
+            var notes = _noteUseCases.SearchNotes(input);
             return Ok(notes);
         }
 

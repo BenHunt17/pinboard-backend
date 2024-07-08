@@ -17,9 +17,9 @@ namespace Pinboard.Application.UseCases
             _dataContext = dataContext;
         }
 
-        public IEnumerable<Note> GetNotes()
+        public IEnumerable<Note> SearchNotes(NoteSearchInput input)
         {
-            return _dataContext.NoteRepository.GetAll();
+            return _dataContext.NoteRepository.Search(input);
         }
 
         public Note AddNote(NoteInput input)

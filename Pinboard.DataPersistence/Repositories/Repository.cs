@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using MongoDB.Driver.Search;
 using Pinboard.DataPersistence.Models;
 
 namespace Pinboard.DataPersistence.Repositories
@@ -22,5 +23,7 @@ namespace Pinboard.DataPersistence.Repositories
         protected SortDefinitionBuilder<TDbModel> SortBuilder = Builders<TDbModel>.Sort;
 
         protected UpdateDefinitionBuilder<TDbModel> UpdateBuilder = Builders<TDbModel>.Update;
+
+        protected SearchDefinitionBuilder<TDbModel> SearchBuilder = Builders<TDbModel>.Search;
     }
 }

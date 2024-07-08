@@ -1,4 +1,5 @@
-﻿using Pinboard.Domain.Model;
+﻿using Pinboard.Domain.Interfaces.Inputs;
+using Pinboard.Domain.Model;
 
 namespace Pinboard.Domain.Interfaces.Repositories
 {
@@ -7,6 +8,8 @@ namespace Pinboard.Domain.Interfaces.Repositories
         Note Get(string id);
 
         IEnumerable<Note> GetAll();
+
+        IEnumerable<Note> Search(NoteSearchInput input);
 
         Note Create(Note note);
 

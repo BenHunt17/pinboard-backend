@@ -1,14 +1,16 @@
 ﻿using MongoDB.Driver;
+using MongoDB.Driver.Search;
 using Pinboard.DataPersistence.Models;
 using Pinboard.Domain.Interfaces.Inputs;
 using Pinboard.Domain.Interfaces.Repositories;
 using Pinboard.Domain.Model;
-using ZstdSharp.Unsafe;
 
 namespace Pinboard.DataPersistence.Repositories
 {
     public class NoteRepository : Repository<Note, NoteModel>, INoteRepository
     {
+        private const string SearchIndexName = "NotesSearchIndex";
+
         public NoteRepository(IMongoClient mongoClient, string collectionName)
             : base(mongoClient, collectionName)
         {
@@ -28,9 +30,35 @@ namespace Pinboard.DataPersistence.Repositories
 
         public IEnumerable<Note> GetAll()
         {
-            var notes = Collection.Find(FilterBuilder.Empty).ToEnumerable();
+            var notes = Collection.Find(FilterBuilder.Empty)
+                .ToEnumerable();
 
-            return notes.Select(x => x.ToDomainModel());
+            return notes.Select(x => x.ToDomainModel()).ToList();
+        }
+
+        public IEnumerable<Note> Search(NoteSearchInput input)
+        {
+            var searchDefinition = SearchBuilder.Compound();
+
+            var aggregation = Collection.Aggregate();
+
+            if (!string.IsNullOrEmpty(input.SearchTerm)) 
+            {
+                searchDefinition
+                    .Should(SearchBuilder.Autocomplete(x => x.Title, input.SearchTerm))
+                    .Should(SearchBuilder.Text(x => x.Content, input.SearchTerm))
+                    .MinimumShouldMatch(1);
+
+                aggregation = aggregation.Search(
+                    searchDefinition,
+                    null,
+                    SearchIndexName);
+            }
+
+            var notes = aggregation
+                .ToEnumerable();
+
+            return notes.Select(x => x.ToDomainModel()).ToList();
         }
 
         public Note Create(Note note)
