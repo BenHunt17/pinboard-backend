@@ -5,7 +5,7 @@ namespace Pinboard.Domain.Interfaces.UseCases
 {
     public interface INoteUseCases
     {
-        IEnumerable<Note> SearchNotes(NoteSearchInput input);
+        PaginatedItems<Note> SearchNotes(NoteSearchInput input);
 
         Note AddNote(NoteInput input);
 

@@ -1,9 +1,7 @@
 ﻿namespace Pinboard.DataPersistence.Models
 {
-    public interface IDatabaseModel<TDomainModel>
+    public interface IDatabaseModel
     {
         public string Id { get; set; }
-
-        public TDomainModel ToDomainModel();
     }
 }

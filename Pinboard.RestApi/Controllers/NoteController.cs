@@ -18,8 +18,8 @@ namespace Pinboard.RestApi.Controllers
         }
 
         [HttpPost("search")]
-        [ProducesResponseType(typeof(IEnumerable<Note>), (int)HttpStatusCode.OK)]
-        public IActionResult Get([FromBody] NoteSearchInput input)
+        [ProducesResponseType(typeof(PaginatedItems<Note>), (int)HttpStatusCode.OK)]
+        public IActionResult Search([FromBody] NoteSearchInput input)
         {
             var notes = _noteUseCases.SearchNotes(input);
             return Ok(notes);

@@ -4,7 +4,7 @@ using Pinboard.Domain.Model;
 
 namespace Pinboard.DataPersistence.Models
 {
-    public class NoteModel : IDatabaseModel<Note>
+    public class NoteModel : IDatabaseModel
     {
         public NoteModel(Note note)
         {

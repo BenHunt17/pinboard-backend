@@ -9,7 +9,7 @@ namespace Pinboard.Domain.Interfaces.Repositories
 
         IEnumerable<Note> GetAll();
 
-        IEnumerable<Note> Search(NoteSearchInput input);
+        PaginatedItems<Note> Search(NoteSearchInput input);
 
         Note Create(Note note);
 

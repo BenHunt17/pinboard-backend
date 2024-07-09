@@ -1,13 +1,14 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Driver.Search;
 using Pinboard.DataPersistence.Models;
+using Pinboard.DataPersistence.Utils;
 using Pinboard.Domain.Interfaces.Inputs;
 using Pinboard.Domain.Interfaces.Repositories;
 using Pinboard.Domain.Model;
 
 namespace Pinboard.DataPersistence.Repositories
 {
-    public class NoteRepository : Repository<Note, NoteModel>, INoteRepository
+    public class NoteRepository : Repository<NoteModel>, INoteRepository
     {
         private const string SearchIndexName = "NotesSearchIndex";
 
@@ -36,7 +37,7 @@ namespace Pinboard.DataPersistence.Repositories
             return notes.Select(x => x.ToDomainModel()).ToList();
         }
 
-        public IEnumerable<Note> Search(NoteSearchInput input)
+        public PaginatedItems<Note> Search(NoteSearchInput input)
         {
             var searchDefinition = SearchBuilder.Compound();
 
@@ -55,10 +56,13 @@ namespace Pinboard.DataPersistence.Repositories
                     SearchIndexName);
             }
 
-            var notes = aggregation
-                .ToEnumerable();
+            var result = aggregation.Paginate(input.Cursor, input.Limit);
 
-            return notes.Select(x => x.ToDomainModel()).ToList();
+            return new PaginatedItems<Note>
+            {
+                Items = result.Items.Select(x => x.ToDomainModel()),
+                NextCursor = result.NextCursor,
+            };
         }
 
         public Note Create(Note note)

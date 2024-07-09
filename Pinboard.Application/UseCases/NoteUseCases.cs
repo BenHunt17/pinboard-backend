@@ -17,8 +17,10 @@ namespace Pinboard.Application.UseCases
             _dataContext = dataContext;
         }
 
-        public IEnumerable<Note> SearchNotes(NoteSearchInput input)
+        public PaginatedItems<Note> SearchNotes(NoteSearchInput input)
         {
+            new NoteSearchInputValidator().ValidateAndThrow(input);
+
             return _dataContext.NoteRepository.Search(input);
         }
 

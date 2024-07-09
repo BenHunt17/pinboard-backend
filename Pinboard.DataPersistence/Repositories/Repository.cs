@@ -4,8 +4,8 @@ using Pinboard.DataPersistence.Models;
 
 namespace Pinboard.DataPersistence.Repositories
 {
-    public abstract class Repository<TDomainModel, TDbModel>
-        where TDbModel : IDatabaseModel<TDomainModel>
+    public abstract class Repository<TDbModel>
+        where TDbModel : IDatabaseModel
     {
         private readonly IMongoClient _client;
 
