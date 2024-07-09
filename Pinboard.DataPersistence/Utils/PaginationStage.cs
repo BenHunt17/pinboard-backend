@@ -25,11 +25,12 @@ namespace Pinboard.DataPersistence.Utils
             if (items.Count() == limit + 1)
             {
                 nextCursor = items.Last().Id;
+                items = items.SkipLast(1);
             }
 
             return new PaginatedItems<TDbModel>
             {
-                Items = items.SkipLast(1),
+                Items = items,
                 NextCursor = nextCursor,
             };
         }
