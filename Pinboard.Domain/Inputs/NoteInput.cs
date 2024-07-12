@@ -1,6 +1,6 @@
 ﻿using Pinboard.Domain.Model;
 
-namespace Pinboard.Domain.Interfaces.Inputs
+namespace Pinboard.Domain.Inputs
 {
     public class NoteInput
     {
@@ -8,12 +8,13 @@ namespace Pinboard.Domain.Interfaces.Inputs
 
         public string Content { get; set; }
 
-        public Note ToDomainModel()
+        public Note ToDomainModel(string authorId)
         {
             return new Note
             {
                 Title = Title,
-                Content = Content
+                Content = Content,
+                AuthorId = authorId
             };
         }
     }

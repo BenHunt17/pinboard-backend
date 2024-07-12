@@ -10,6 +10,7 @@ namespace Pinboard.DataPersistence.Models
         {
             Title = note.Title;
             Content = note.Content;
+            AuthorId = note.AuthorId;
         }
 
         [BsonId]
@@ -22,13 +23,17 @@ namespace Pinboard.DataPersistence.Models
         [BsonElement]
         public string Content { get; set; }
 
+        [BsonElement]
+        public string AuthorId { get; set; }
+
         public Note ToDomainModel()
         {
             return new Note
             {
                 Id = Id,
                 Title = Title,
-                Content = Content
+                Content = Content,
+                AuthorId = AuthorId
             };
         }
     }

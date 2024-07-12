@@ -1,4 +1,4 @@
-﻿using Pinboard.Domain.Interfaces.Inputs;
+﻿using Pinboard.Domain.Inputs;
 using Pinboard.Domain.Model;
 
 namespace Pinboard.Domain.Interfaces.UseCases

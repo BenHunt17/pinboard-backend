@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Pinboard.Domain.Interfaces.Inputs;
+using Pinboard.Domain.Inputs;
 
 namespace Pinboard.Application.Validators
 {

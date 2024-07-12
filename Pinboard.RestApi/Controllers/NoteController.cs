@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Pinboard.Domain.Interfaces.Inputs;
+using Pinboard.Domain.Inputs;
 using Pinboard.Domain.Interfaces.UseCases;
 using Pinboard.Domain.Model;
 using System.Net;

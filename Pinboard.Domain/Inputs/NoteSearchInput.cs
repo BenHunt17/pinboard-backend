@@ -1,4 +1,4 @@
-﻿namespace Pinboard.Domain.Interfaces.Inputs
+﻿namespace Pinboard.Domain.Inputs
 {
     public class NoteSearchInput
     {
