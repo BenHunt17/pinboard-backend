@@ -7,6 +7,7 @@ using Pinboard.DataPersistence;
 using Pinboard.Domain.Interfaces;
 using Pinboard.Domain.Interfaces.Repositories;
 using Pinboard.Domain.Interfaces.UseCases;
+using Pinboard.Middleware;
 using Pinboard.RestApi.User;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -55,6 +56,8 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IUserState, UserState>();
 
+builder.Services.AddTransient<ErrorHandlerMiddleware>();
+
 builder.Services.AddSingleton<IMongoClient>(x =>
     new MongoClient(builder.Configuration.GetSection("PinboardDatabase:ConnectionString").Value));
 
@@ -76,6 +79,8 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -81,7 +81,7 @@ namespace Pinboard.DataPersistence.Repositories
 
         public Note Create(Note note)
         {
-            //TODO - Look at making the title unqiue per person
+            //TODO - catch mongo duplictate exception and throw the duplicate key exception to make error response more user friendly 
             var noteModel = new NoteModel(note);
 
             Collection.InsertOne(noteModel);
