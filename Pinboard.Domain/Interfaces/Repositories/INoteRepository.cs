@@ -20,5 +20,7 @@ namespace Pinboard.Domain.Interfaces.Repositories
         Note UpdateContent(string id, string content);
 
         void DeleteByIds(IEnumerable<string> ids);
+
+        void DeleteByAuthorId(string authorId);
     }
 }

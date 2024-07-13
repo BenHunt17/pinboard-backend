@@ -111,9 +111,16 @@ namespace Pinboard.DataPersistence.Repositories
 
         public void DeleteByIds(IEnumerable<string> ids)
         {
-            var filterDefintion = FilterBuilder.In(x => x.Id, ids);
+            var filterDefinition = FilterBuilder.In(x => x.Id, ids);
 
-            Collection.DeleteMany(filterDefintion);
+            Collection.DeleteMany(filterDefinition);
+        }
+
+        public void DeleteByAuthorId(string authorId)
+        {
+            var filterDefinition = FilterBuilder.Eq(x => authorId, authorId);
+
+            Collection.DeleteMany(filterDefinition);
         }
 
         private NoteModel UpdateNote(string id, UpdateDefinition<NoteModel> updateDefinition)

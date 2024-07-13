@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
 using Pinboard.Application.UseCases;
@@ -49,9 +48,11 @@ builder.Services.AddSwaggerGen(options =>
                     }
                 },
                 new string[]{}
-            }
+        }
         });
 });
+
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IUserState, UserState>();
@@ -63,7 +64,10 @@ builder.Services.AddSingleton<IMongoClient>(x =>
 
 builder.Services.AddSingleton<IDataContext, DataContext>();
 
+builder.Services.AddSingleton<IAuthService, AuthService>();
+
 builder.Services.AddScoped<INoteUseCases, NoteUseCases>();
+builder.Services.AddScoped<IUserUseCases, UserUseCases>();
 
 builder.Services.AddCors(options =>
 {

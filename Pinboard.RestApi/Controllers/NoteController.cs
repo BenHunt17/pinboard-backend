@@ -50,7 +50,7 @@ namespace Pinboard.RestApi.Controllers
         }
 
         [HttpDelete]
-        [ProducesResponseType(typeof(Note), (int)HttpStatusCode.NoContent)]
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.NoContent)]
         public IActionResult Create([FromBody] IEnumerable<string> ids)
         {
             _noteUseCases.DeleteNotes(ids);
