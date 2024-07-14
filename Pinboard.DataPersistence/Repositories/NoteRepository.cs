@@ -118,7 +118,7 @@ namespace Pinboard.DataPersistence.Repositories
 
         public void DeleteByAuthorId(string authorId)
         {
-            var filterDefinition = FilterBuilder.Eq(x => authorId, authorId);
+            var filterDefinition = FilterBuilder.Eq(x => x.AuthorId, authorId);
 
             Collection.DeleteMany(filterDefinition);
         }

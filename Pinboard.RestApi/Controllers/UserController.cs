@@ -5,7 +5,7 @@ using System.Net;
 namespace Pinboard.RestApi.Controllers
 {
     [ApiController]
-    [Route("users")]
+    [Route("api/users")]
     public class UserController : Controller
     {
         private readonly IUserUseCases _userUseCases;
